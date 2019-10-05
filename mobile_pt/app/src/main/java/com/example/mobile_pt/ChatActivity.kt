@@ -15,5 +15,10 @@ class ChatActivity : AppCompatActivity() {
             val intent1= Intent(this, MainActivity::class.java)
             startActivity(intent1)
         }
+
+        BottomList_Planner.setOnClickListener{
+            val intent2= Intent(this,PlanActivity::class.java)
+            startActivity(intent2)
+        }
     }
 }
