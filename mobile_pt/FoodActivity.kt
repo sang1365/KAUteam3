@@ -1,17 +1,15 @@
 package com.example.mobile_pt
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_new__main2.*
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.activity_food.*
 import org.jetbrains.anko.startActivity
 
-class New_Main2Activity : AppCompatActivity() {
+class FoodActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new__main2)
+        setContentView(R.layout.activity_food)
 
         BottomList_Chat_d.setOnClickListener{ //채팅버튼 누르면 이동
             startActivity<ChatActivity>()
