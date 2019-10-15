@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/detail"
+        android:layout_width="411dp"
+        android:layout_height="273dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.731">
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="ID"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="322dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@id/id"
+            android:background="@drawable/rectangle"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Password"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="주소"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/address"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="체중"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/weight"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="신장"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/psinput"
+            android:layout_width="219dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/Password"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/Password"
+            android:background="@drawable/rectangle"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/address"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/address"
+            android:background="@drawable/rectangle"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/weight"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/weight"
+            android:background="@drawable/rectangle"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/height"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/height"
+            android:background="@drawable/rectangle"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="트레이닝"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.306"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail"
+        app:layout_constraintVertical_bias="0.506" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="트레이너"
+        android:textSize="30dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/button2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/detail"
+        app:layout_constraintVertical_bias="0.507" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="186dp"
+        android:layout_height="184dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/detail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="52dp"
+        android:text="이름"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/nameinput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/nameinput"
+        android:layout_width="172dp"
+        android:layout_height="33dp"
+        android:background="@drawable/rectangle"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.677"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나이"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@id/ageinput"
+        app:layout_constraintEnd_toStartOf="@+id/gender"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@id/nameinput"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:text="성별"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/age"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/nameinput"
+        app:layout_constraintTop_toBottomOf="@id/nameinput"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/ageinput"
+        android:layout_width="50dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rectangle"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/age"
+        app:layout_constraintRight_toRightOf="@id/age"
+        app:layout_constraintTop_toBottomOf="@id/age" />
+
+    <TextView
+        android:id="@+id/genderinput"
+        android:layout_width="50dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="89dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintBottom_toTopOf="@+id/detail"
+        app:layout_constraintLeft_toLeftOf="@id/gender"
+        app:layout_constraintRight_toRightOf="@id/gender"
+        app:layout_constraintTop_toBottomOf="@id/gender" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

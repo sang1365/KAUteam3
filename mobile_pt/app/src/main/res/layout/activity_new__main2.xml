@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".New_Main2Activity">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal"
+        android:text="식단"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/Chat_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Chat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/List_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title"
+        app:layout_constraintVertical_bias="0.442">
+
+        <TextView
+            android:id="@+id/text_breakfast"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:text="아침"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toTopOf="@id/listview_break"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/input_breakfast"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <Button
+            android:id="@+id/add_button1"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="add"
+            app:layout_constraintBottom_toTopOf="@id/listview_break"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/delete_button1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <TextView
+            android:id="@+id/text_dinner"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:text="저녁"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toTopOf="@id/listview_dinner"
+            app:layout_constraintEnd_toStartOf="@+id/input_dinner"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/add_button3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/listview_lunch"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <Button
+            android:id="@+id/add_button3"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:text="add"
+            app:layout_constraintBottom_toTopOf="@id/listview_dinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toRightOf="@id/delete_button3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/listview_lunch"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <EditText
+            android:id="@+id/input_breakfast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="breakfast"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toTopOf="@id/listview_break"
+            app:layout_constraintLeft_toRightOf="@id/text_breakfast"
+            app:layout_constraintRight_toLeftOf="@id/delete_button1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <EditText
+            android:id="@+id/input_lunch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="lunch"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toTopOf="@id/listview_lunch"
+            app:layout_constraintLeft_toRightOf="@id/text_lunch"
+            app:layout_constraintRight_toLeftOf="@id/delete_button2"
+            app:layout_constraintTop_toBottomOf="@id/listview_break"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <TextView
+            android:id="@+id/text_lunch"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:text="점심"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toTopOf="@id/listview_lunch"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintRight_toLeftOf="@id/input_lunch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/listview_break"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <Button
+            android:id="@+id/add_button2"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:text="add"
+            app:layout_constraintBottom_toTopOf="@id/listview_lunch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/delete_button2"
+            app:layout_constraintTop_toBottomOf="@id/listview_break"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <EditText
+            android:id="@+id/input_dinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="dinner"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toTopOf="@id/listview_dinner"
+            app:layout_constraintLeft_toRightOf="@id/text_dinner"
+            app:layout_constraintRight_toLeftOf="@id/delete_button3"
+            app:layout_constraintTop_toBottomOf="@id/listview_lunch"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <Button
+            android:id="@+id/delete_button1"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="delete"
+            app:layout_constraintBottom_toTopOf="@id/listview_break"
+            app:layout_constraintLeft_toRightOf="@id/input_breakfast"
+            app:layout_constraintRight_toLeftOf="@id/add_button1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/delete_button2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="delete"
+            app:layout_constraintBottom_toTopOf="@id/listview_lunch"
+            app:layout_constraintLeft_toRightOf="@id/input_lunch"
+            app:layout_constraintRight_toLeftOf="@id/add_button2"
+            app:layout_constraintTop_toBottomOf="@id/listview_break" />
+
+        <Button
+            android:id="@+id/delete_button3"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="delete"
+            app:layout_constraintBottom_toTopOf="@id/listview_dinner"
+            app:layout_constraintLeft_toRightOf="@id/input_dinner"
+            app:layout_constraintRight_toLeftOf="@id/add_button3"
+            app:layout_constraintTop_toBottomOf="@id/listview_lunch" />
+
+        <Space
+            android:id="@+id/space1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_dinner" />
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_dinner" />
+
+        <Space
+            android:id="@+id/space3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_button3" />
+
+        <ListView
+            android:id="@+id/listview_break"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/text_lunch"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_breakfast">
+
+        </ListView>
+
+        <ListView
+            android:id="@+id/listview_lunch"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/text_dinner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_lunch"></ListView>
+
+        <ListView
+            android:id="@+id/listview_dinner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_dinner"></ListView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/List_name"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Chat_layout">
+
+        <Button
+            android:id="@+id/BottomList_Diet_d"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottomlist_shape"
+            android:textSize="27sp"
+            android:text="식단" />
+
+        <Button
+            android:id="@+id/BottomList_Planner_d"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/bottomlist_shape"
+            android:text="플래너"
+            android:textSize="27sp" />
+
+        <Button
+            android:id="@+id/BottomList_Chat_d"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/bottomlist_shape"
+            android:textSize="27sp"
+            android:text="대화" />
+
+        <Button
+            android:id="@+id/BottomList_Member_d"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/bottomlist_shape"
+            android:textSize="27sp"
+            android:text="회원" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
