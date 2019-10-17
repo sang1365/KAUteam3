@@ -13,7 +13,7 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
 
         BottomList_Diet_c.setOnClickListener{
-            startActivity<New_Main2Activity>()
+            startActivity<FoodActivity>()
         }
         BottomList_Planner_c.setOnClickListener{
             startActivity<PlannerActivity>()

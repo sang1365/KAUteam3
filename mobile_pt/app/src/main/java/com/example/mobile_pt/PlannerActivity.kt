@@ -13,7 +13,7 @@ import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_chat.*
 
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_new__main2.*
+import kotlinx.android.synthetic.main.activity_food.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.startActivity
 
@@ -39,7 +39,7 @@ class PlannerActivity : AppCompatActivity() {
             startActivity<EditActivity>()
         }
         BottomList_Diet_p.setOnClickListener{
-            startActivity<New_Main2Activity>()
+            startActivity<FoodActivity>()
         }
         BottomList_Chat_p.setOnClickListener{
             startActivity<ChatActivity>()

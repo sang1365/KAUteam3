@@ -46,5 +46,5 @@ class TodoListAdapter(realmResult: OrderedRealmCollection<Todo>)
 class ViewHolder(view:View)
 {
     val dateTextView: TextView = view.findViewById(R.id.text1)
-    var textTextView: TextView = view.findViewById(R.id.text2)
+    val textTextView: TextView = view.findViewById(R.id.text2)
 }
