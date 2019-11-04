@@ -10,12 +10,14 @@ import android.widget.ListView
 import io.realm.Realm
 import io.realm.Sort
 import io.realm.kotlin.where
+import kotlinx.android.synthetic.main.activity_chat.*
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_food.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.startActivity
 
-class MainActivity : AppCompatActivity() {
+class PlannerActivity : AppCompatActivity() {
 
     val realm = Realm.getDefaultInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +38,13 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             startActivity<EditActivity>()
         }
+        BottomList_Diet_p.setOnClickListener{
+            startActivity<FoodActivity>()
+        }
+        BottomList_Chat_p.setOnClickListener{
+            startActivity<ChatActivity>()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

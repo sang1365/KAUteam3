@@ -144,91 +144,90 @@
         app:layout_constraintTop_toBottomOf="@+id/detail"
         app:layout_constraintVertical_bias="0.507" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="186dp"
-        android:layout_height="184dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrain1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toTopOf="@+id/detail"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        app:layout_constraintVertical_bias="0.488">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="52dp"
-        android:text="이름"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/nameinput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/genderinput"
+            android:layout_width="50dp"
+            android:layout_height="33dp"
+            android:background="@drawable/rectangle"
+            app:layout_constraintLeft_toLeftOf="@id/gender"
+            app:layout_constraintRight_toRightOf="@id/gender"
+            app:layout_constraintTop_toBottomOf="@id/gender" />
 
-    <TextView
-        android:id="@+id/nameinput"
-        android:layout_width="172dp"
-        android:layout_height="33dp"
-        android:background="@drawable/rectangle"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.677"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/ageinput"
+            android:layout_width="50dp"
+            android:layout_height="33dp"
+            android:background="@drawable/rectangle"
+            android:textSize="25sp"
+            app:layout_constraintLeft_toLeftOf="@id/age"
+            app:layout_constraintRight_toRightOf="@id/age"
+            app:layout_constraintTop_toBottomOf="@id/age" />
 
-    <TextView
-        android:id="@+id/age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="나이"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@id/ageinput"
-        app:layout_constraintEnd_toStartOf="@+id/gender"
-        app:layout_constraintHorizontal_bias="0.212"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@id/nameinput"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/nameinput"
+            android:layout_width="172dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle"
+            android:textSize="25sp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="@id/name"
+            app:layout_constraintRight_toRightOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name" />
 
-    <TextView
-        android:id="@+id/gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
-        android:text="성별"
-        android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/age"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/nameinput"
-        app:layout_constraintTop_toBottomOf="@id/nameinput"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="186dp"
+            android:layout_height="184dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
 
-    <TextView
-        android:id="@+id/ageinput"
-        android:layout_width="50dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rectangle"
-        android:textSize="25sp"
-        app:layout_constraintLeft_toLeftOf="@id/age"
-        app:layout_constraintRight_toRightOf="@id/age"
-        app:layout_constraintTop_toBottomOf="@id/age" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="60dp"
+            android:text="이름"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/nameinput"
+            app:layout_constraintLeft_toRightOf="@id/imageButton"
+            app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
-        android:id="@+id/genderinput"
-        android:layout_width="50dp"
-        android:layout_height="33dp"
-        android:layout_marginBottom="89dp"
-        android:background="@drawable/rectangle"
-        app:layout_constraintBottom_toTopOf="@+id/detail"
-        app:layout_constraintLeft_toLeftOf="@id/gender"
-        app:layout_constraintRight_toRightOf="@id/gender"
-        app:layout_constraintTop_toBottomOf="@id/gender" />
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="성별"
+            android:textSize="25sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/age"
+            app:layout_constraintLeft_toRightOf="@id/age"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:text="나이"
+            android:textSize="25sp"
+            app:layout_constraintLeft_toRightOf="@id/imageButton"
+            app:layout_constraintRight_toLeftOf="@id/gender"
+            app:layout_constraintTop_toBottomOf="@id/nameinput" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
