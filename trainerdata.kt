@@ -1,3 +1,6 @@
 package com.example.mobile_pt
 
- class trainerdata (val name: String,  val age: String, val photo: String)
+data class trainerdata(
+ val address: String? = null,
+ val name: String? = null,
+ val dinner: String?= null)
