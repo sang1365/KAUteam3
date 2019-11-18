@@ -3,20 +3,24 @@
     package="com.example.mobile_pt">
 
     <application
-        android:name=".MyPlanner"
+        android:name=".planner.MyPlanner"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Traineralram"/>
-        <activity android:name=".trainerlist" />
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".signinactivity" />
-        <activity android:name=".signactivity" />
-        <activity android:name=".DietListAdapter" />
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".messages.ChatLogActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".messages.LatestMessagesActivity" />
+        </activity>
+        <activity android:name=".messages.NewMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".messages.LatestMessagesActivity" />
+        </activity>
+        <activity android:name=".messages.LatestMessagesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -24,12 +28,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".Traineralram" />
+        <activity android:name=".TrainerListActivity" />
+        <activity android:name=".signinactivity" />
+        <activity android:name=".DietListAdapter" />
+        <activity android:name=".registerlogin.RegisterActivity" />
+        <activity android:name=".registerlogin.LoginActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".FoodActivity" />
-        <activity android:name=".EditActivity" />
+        <activity android:name=".planner.EditActivity" />
         <activity
-            android:name=".PlannerActivity"
+            android:name=".planner.PlannerActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

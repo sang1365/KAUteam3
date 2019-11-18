@@ -23,7 +23,7 @@ tools:context=".FoodActivity">
     android:id="@+id/Chat_layout"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    app:layout_constraintBottom_toTopOf="@+id/List_name"
+    app:layout_constraintBottom_toTopOf="@+id/List_name_food"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
@@ -241,7 +241,7 @@ tools:context=".FoodActivity">
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 <LinearLayout
-    android:id="@+id/List_name"
+    android:id="@+id/List_name_food"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:orientation="horizontal"

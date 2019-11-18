@@ -47,4 +47,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"/>
 
+    <LinearLayout
+        android:id="@+id/List_name_trainer"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <Button
+            android:id="@+id/BottomList_Diet_trainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottomlist_shape"
+            android:textSize="27sp"
+            android:text="식단" />
+
+        <Button
+            android:id="@+id/BottomList_Planner_trainer"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/bottomlist_shape"
+            android:text="플래너"
+            android:textSize="27sp" />
+
+        <Button
+            android:id="@+id/BottomList_Chat_trainer"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/bottomlist_shape"
+            android:textSize="27sp"
+            android:text="대화" />
+
+        <Button
+            android:id="@+id/BottomList_Member_trainer"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/bottomlist_shape"
+            android:textSize="27sp"
+            android:text="회원" />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

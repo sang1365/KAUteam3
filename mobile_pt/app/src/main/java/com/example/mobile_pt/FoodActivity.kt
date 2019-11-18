@@ -1,15 +1,13 @@
 package com.example.mobile_pt
 
-import android.accounts.Account
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_food.*
 import org.jetbrains.anko.startActivity
 import android.widget.EditText
-import android.widget.ListView
-import kotlinx.android.synthetic.main.content_main.*
-import org.jetbrains.anko.startActivity
+import com.example.mobile_pt.planner.PlannerActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class FoodActivity : AppCompatActivity() {
 
@@ -17,6 +15,10 @@ class FoodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food)
 
+        val uid = FirebaseAuth.getInstance().uid
+        val ref_break = FirebaseDatabase.getInstance().getReference("/users/$uid").child("break")
+        val ref_lunch = FirebaseDatabase.getInstance().getReference("/users/$uid").child("lunch")
+        val ref_dinner = FirebaseDatabase.getInstance().getReference("/users/$uid").child("dinner")
         var breakfastlist = ArrayList<String>()
         var lunchlist = ArrayList<String>()
         var dinnerlist = ArrayList<String>()
@@ -36,6 +38,8 @@ class FoodActivity : AppCompatActivity() {
         add_button1.setOnClickListener{
             breakfastlist.add( editbreak.text.toString())
             breakfastAdapter.notifyDataSetChanged()
+
+            ref_break.setValue(editbreak.text.toString())
         }
 
         delete_button1.setOnClickListener{
@@ -46,6 +50,8 @@ class FoodActivity : AppCompatActivity() {
         add_button2.setOnClickListener{
             lunchlist.add( editlunch.text.toString())
             breakfastAdapter.notifyDataSetChanged()
+
+            ref_lunch.setValue(editlunch.text.toString())
         }
 
         delete_button2.setOnClickListener{
@@ -56,6 +62,8 @@ class FoodActivity : AppCompatActivity() {
         add_button3.setOnClickListener{
             dinnerlist.add( editdinner.text.toString())
             breakfastAdapter.notifyDataSetChanged()
+
+            ref_dinner.setValue(editdinner.text.toString())
         }
 
         delete_button3.setOnClickListener{
@@ -67,6 +75,9 @@ class FoodActivity : AppCompatActivity() {
         }
         BottomList_Planner_d.setOnClickListener{ //플래너버튼 누르면 이동
             startActivity<PlannerActivity>()
+        }
+        BottomList_Member_d.setOnClickListener{ //회원버튼 누르면 이동
+            startActivity<TrainerListActivity>()
         }
     }
 

@@ -4,45 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".planner.PlannerActivity"
+    tools:showIn="@layout/activity_planner">
 
-    <TextView
-        android:id="@+id/text_title"
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_horizontal"
-        android:text="대화방"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@id/Chat_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Chat_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/List_name_chat"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title"
-        app:layout_constraintVertical_bias="0.442" />
-
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-37dp"
+        tools:layout_editor_absoluteY="229dp" />
     <LinearLayout
-        android:id="@+id/List_name_chat"
+        android:id="@+id/List_name_planner"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Chat_layout">
+        >
 
         <Button
-            android:id="@+id/BottomList_Diet_c"
+            android:id="@+id/BottomList_Diet_p"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -51,16 +34,16 @@
             android:text="식단" />
 
         <Button
-            android:id="@+id/BottomList_Planner_c"
+            android:id="@+id/BottomList_Planner_p"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"
             android:background="@drawable/bottomlist_shape"
-            android:textSize="27sp"
-            android:text="플래너" />
+            android:text="플래너"
+            android:textSize="27sp" />
 
         <Button
-            android:id="@+id/BottomList_Chat_c"
+            android:id="@+id/BottomList_Chat_p"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -69,13 +52,13 @@
             android:text="대화" />
 
         <Button
-            android:id="@+id/BottomList_Member_c"
+            android:id="@+id/BottomList_Member_p"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"
             android:background="@drawable/bottomlist_shape"
             android:textSize="27sp"
             android:text="회원" />
-    </LinearLayout>
 
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

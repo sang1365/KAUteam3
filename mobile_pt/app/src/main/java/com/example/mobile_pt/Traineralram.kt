@@ -41,7 +41,7 @@ class Traineralram : AppCompatActivity()  {
 
     fun createNotification(){
         val builder : NotificationCompat.Builder = NotificationCompat.Builder(this,"default")
-        builder.setSmallIcon(R.mipmap.ic_launcher) //아이곤
+        builder.setSmallIcon(R.mipmap.ic_launcher) //아이콘
         builder.setContentTitle("Mobile PT") //세부제목
         builder.setContentText("신청이 완료되었습니다") //세부내용
         builder.setColor(Color.RED) //알림 색깔?
