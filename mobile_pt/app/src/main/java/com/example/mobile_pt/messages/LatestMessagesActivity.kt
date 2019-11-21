@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.mobile_pt.R
 import com.example.mobile_pt.models.ChatMessage
@@ -29,13 +28,13 @@ class LatestMessagesActivity : AppCompatActivity() {
         var currentUser: User? = null
         val TAG = "LatestMessages"
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_messages)
 
         recyclerview_latest_messages.adapter = adapter
         recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-
 
         // set item click listener on your adapter
         adapter.setOnItemClickListener { item, view ->
@@ -50,18 +49,19 @@ class LatestMessagesActivity : AppCompatActivity() {
         }
 
         listenForLatestMessages()
+
         fetchCurrentUser()
-        verifiUserIsLoggedIn()
+
+        verifyUserIsLoggedIn()
     }
 
     val latestMessagesMap = HashMap<String, ChatMessage>()
 
-
-    private fun refreshRecyclerViewMessages(){
-       adapter.clear()
-       latestMessagesMap.values.forEach{
-           adapter.add(LatestMessageRow(it))
-       }
+    private fun refreshRecyclerViewMessages() {
+        adapter.clear()
+        latestMessagesMap.values.forEach {
+            adapter.add(LatestMessageRow(it))
+        }
     }
 
     private fun listenForLatestMessages() {
@@ -94,23 +94,33 @@ class LatestMessagesActivity : AppCompatActivity() {
 
     val adapter = GroupAdapter<ViewHolder>()
 
-    private fun fetchCurrentUser(){
+//  private fun setupDummyRows() {
+//
+//
+//    adapter.add(LatestMessageRow())
+//    adapter.add(LatestMessageRow())
+//    adapter.add(LatestMessageRow())
+//  }
+
+    private fun fetchCurrentUser() {
         val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-        ref.addListenerForSingleValueEvent(object:ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-            }
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
 
             override fun onDataChange(p0: DataSnapshot) {
                 currentUser = p0.getValue(User::class.java)
                 Log.d("LatestMessages", "Current user ${currentUser?.profileImageUrl}")
             }
 
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
         })
     }
-    private fun verifiUserIsLoggedIn(){
+
+    private fun verifyUserIsLoggedIn() {
         val uid = FirebaseAuth.getInstance().uid
-        if (uid == null){
+        if (uid == null) {
             val intent = Intent(this, RegisterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
@@ -118,7 +128,7 @@ class LatestMessagesActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId){
+        when (item?.itemId) {
             R.id.menu_new_message -> {
                 val intent = Intent(this, NewMessageActivity::class.java)
                 startActivity(intent)
@@ -138,4 +148,5 @@ class LatestMessagesActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
 }

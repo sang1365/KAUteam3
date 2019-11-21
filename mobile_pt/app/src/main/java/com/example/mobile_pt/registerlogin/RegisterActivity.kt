@@ -27,18 +27,19 @@ class RegisterActivity: AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         register_button_register.setOnClickListener {
-           performRegister()
-
+            performRegister()
         }
+
         already_have_account_text_view.setOnClickListener {
             Log.d(TAG, "Try to show login activity")
 
-            //launch the login activity somehow
+            // launch the login activity somehow
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-        selectphoto_button_register.setOnClickListener{
-            Log.d("RegisterActivity", "Try to show photo selector")
+
+        selectphoto_button_register.setOnClickListener {
+            Log.d(TAG, "Try to show photo selector")
 
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
@@ -49,9 +50,10 @@ class RegisterActivity: AppCompatActivity() {
     var selectedPhotoUri: Uri? = null
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null){
-            //proceed and check what the selected image was..
-            Log.d("RegisterActivity", "Photo was selected")
+
+        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
+            // proceed and check what the selected image was....
+            Log.d(TAG, "Photo was selected")
 
             selectedPhotoUri = data.data
 
@@ -60,62 +62,64 @@ class RegisterActivity: AppCompatActivity() {
             selectphoto_imageview_register.setImageBitmap(bitmap)
 
             selectphoto_button_register.alpha = 0f
-           // val bitmapDrawable = BitmapDrawable(bitmap)
-            //selectphoto_button_register.setBackgroundDrawable(bitmapDrawable)
+
+//      val bitmapDrawable = BitmapDrawable(bitmap)
+//      selectphoto_button_register.setBackgroundDrawable(bitmapDrawable)
         }
     }
-    private fun performRegister(){
+    private fun performRegister() {
         val email = email_edittext_register.text.toString()
-        val password = password_edittext_register.toString()
-        if(email.isEmpty() || password.isEmpty()){
-            Toast.makeText(this,"Please enter text in email/pw", Toast.LENGTH_SHORT).show()
+        val password = password_edittext_register.text.toString()
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please enter text in email/pw", Toast.LENGTH_SHORT).show()
             return
         }
-        Log.d("RegisterActivity", "Email is : " + email)
-        Log.d("RegisterActivity", "Password : " + password)
 
-        //Firebase Authentication to create a user with email and password
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
+        Log.d(TAG, "Attempting to create user with email: $email")
+
+        // Firebase Authentication to create a user with email and password
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
-                if(!it.isSuccessful)return@addOnCompleteListener
+                if (!it.isSuccessful) return@addOnCompleteListener
 
-                //else if successful
-                Log.d(TAG, "Successfully created user with uid:" + (it.result?.user?.uid))
+                // else if successful
+                Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
 
                 uploadImageToFirebaseStorage()
             }
             .addOnFailureListener{
-                Log.d("RegisterActivity", "Failed to create user:"+ it.message)
-                Toast.makeText(this,"Failed to create user:"+ it.message, Toast.LENGTH_SHORT).show()
+                Log.d(TAG, "Failed to create user: ${it.message}")
+                Toast.makeText(this, "Failed to create user: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
-    private fun uploadImageToFirebaseStorage(){
-        if(selectedPhotoUri == null) return
+    private fun uploadImageToFirebaseStorage() {
+        if (selectedPhotoUri == null) return
+
         val filename = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
 
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener {
-                Log.d("RegisterActiviy","Successfully uploaded image:${it.metadata?.path}")
+                Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
 
                 ref.downloadUrl.addOnSuccessListener {
-                    Log.d("RegisterActivity", "File Location: $it")
+                    Log.d(TAG, "File Location: $it")
+
                     saveUserToFirebaseDatabase(it.toString())
                 }
             }
-            .addOnFailureListener{
-                //do some logging here
-                Log.d(TAG,"Failed to upload image to storage: ${it.message}")
+            .addOnFailureListener {
+                Log.d(TAG, "Failed to upload image to storage: ${it.message}")
             }
     }
-    private fun saveUserToFirebaseDatabase(profileImageUri: String)
-    {
+    private fun saveUserToFirebaseDatabase(profileImageUri: String) {
         val uid = FirebaseAuth.getInstance().uid ?:""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
         val user = User(uid, username_edittext_register.text.toString(),address_edittext_register.text.toString(), profileImageUri)
         ref.setValue(user)
             .addOnSuccessListener {
-                Log.d("RegisterActivity", "Finally we saved the user to Firebase Database")
+                Log.d(TAG, "Finally we saved the user to Firebase Database")
 
                 //로그인 성공 후 이동하는 액티비티
                 val intent = Intent(this, LatestMessagesActivity::class.java)
@@ -124,7 +128,7 @@ class RegisterActivity: AppCompatActivity() {
 
             }
             .addOnFailureListener {
-                Log.d("RegisterActivity", "Failed to set value to database: ${it.message}")
+                Log.d(TAG, "Failed to set value to database: ${it.message}")
             }
     }
 }
