@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_breakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="아침"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/add_button1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_break"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <ImageButton
+        android:id="@+id/add_button1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/add"
+        app:layout_constraintBottom_toTopOf="@id/delete_button1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_break"
+        app:layout_constraintTop_toBottomOf="@id/text_breakfast" />
+
+    <TextView
+        android:id="@+id/text_dinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="저녁"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/add_button3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_dinner"
+        app:layout_constraintTop_toBottomOf="@id/delete_button2" />
+
+    <ImageButton
+        android:id="@+id/add_button3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/add"
+        app:layout_constraintBottom_toTopOf="@id/delete_button3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_dinner"
+        app:layout_constraintTop_toBottomOf="@id/text_dinner" />
+
+    <TextView
+        android:id="@+id/text_lunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="점심"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/add_button2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_lunch"
+        app:layout_constraintTop_toBottomOf="@id/delete_button1" />
+
+    <ImageButton
+        android:id="@+id/add_button2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/add"
+        app:layout_constraintBottom_toTopOf="@id/delete_button2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_lunch"
+        app:layout_constraintTop_toBottomOf="@id/text_lunch" />
+
+    <ImageButton
+        android:id="@+id/delete_button1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/delete"
+        app:layout_constraintBottom_toTopOf="@id/text_lunch"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_break"
+        app:layout_constraintTop_toBottomOf="@id/add_button1" />
+
+    <ImageButton
+        android:id="@+id/delete_button2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/delete"
+        app:layout_constraintBottom_toTopOf="@id/text_dinner"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_lunch"
+        app:layout_constraintTop_toBottomOf="@id/add_button2" />
+
+    <ImageButton
+        android:id="@+id/delete_button3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/delete"
+        app:layout_constraintBottom_toTopOf="@id/space1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/Imageview_dinner"
+        app:layout_constraintTop_toBottomOf="@id/add_button3" />
+
+    <Space
+        android:id="@+id/space1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/delete_button3"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <ImageView
+        android:id="@+id/Imageview_break"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/Imageview_lunch"
+        app:layout_constraintLeft_toRightOf="@id/text_breakfast"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <ImageView
+        android:id="@+id/Imageview_lunch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/Imageview_dinner"
+        app:layout_constraintLeft_toRightOf="@id/text_lunch"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Imageview_break"></ImageView>
+
+    <ImageView
+        android:id="@+id/Imageview_dinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/text_dinner"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Imageview_lunch"></ImageView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

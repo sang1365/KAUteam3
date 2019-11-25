@@ -12,7 +12,7 @@ tools:context=".FoodActivity">
     android:gravity="center_horizontal"
     android:text="식단"
     android:textSize="40sp"
-    app:layout_constraintBottom_toTopOf="@id/Chat_layout"
+    app:layout_constraintBottom_toTopOf="@id/Frame_layout"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.501"
     app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@ tools:context=".FoodActivity">
     app:layout_constraintVertical_chainStyle="spread_inside" />
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/Chat_layout"
+    android:id="@+id/Frame_layout"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     app:layout_constraintBottom_toTopOf="@+id/List_name_food"
@@ -248,7 +248,7 @@ tools:context=".FoodActivity">
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/Chat_layout">
+    app:layout_constraintTop_toBottomOf="@id/Frame_layout">
 
     <Button
         android:id="@+id/BottomList_Diet_d"

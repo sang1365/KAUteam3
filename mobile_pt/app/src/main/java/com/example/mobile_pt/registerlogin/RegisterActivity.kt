@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import com.example.mobile_pt.New_Main2Activity
 import com.example.mobile_pt.messages.LatestMessagesActivity
 import com.example.mobile_pt.R
 import com.example.mobile_pt.models.User
@@ -122,8 +123,9 @@ class RegisterActivity: AppCompatActivity() {
                 Log.d(TAG, "Finally we saved the user to Firebase Database")
 
                 //로그인 성공 후 이동하는 액티비티
-                val intent = Intent(this, LatestMessagesActivity::class.java)
+                val intent = Intent(this, New_Main2Activity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.putExtra("user",user)
                 startActivity(intent)
 
             }
