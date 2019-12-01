@@ -3,6 +3,11 @@ package com.example.mobile_pt
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_json.*
 import okhttp3.*
@@ -20,13 +25,43 @@ import org.json.JSONArray
 
 
 class JsonActivity : AppCompatActivity() {
-    lateinit  var addressList: ArrayList<addressdata>
+
+
+    private val database = FirebaseDatabase.getInstance()
+    private val dataRef = database.getReference("users")
+    val locheck = arrayListOf<location>()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_json)
-        var addressList = addressdata()
+
+        dataRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                for (dataSnapshot2 in dataSnapshot.children) { //하위노드가 없을 떄까지 반복
+                    val lodata = dataSnapshot2.getValue(location::class.java)!!
+
+                    locheck.add(lodata)
+                }
+                val size= locheck.size
+                for(i in 0..(size-1)){
+
+                    locatechecker(locheck[i].address)
+
+                }
+
+
+            }
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
+    }
+    fun locatechecker(locate : String?) {
         val JSON = "application/json; charset=utf-8".toMediaType()
-        var url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=연사리"
+        val address = FirebaseDatabase.getInstance().getReference("users").child("address")
+        var url  = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=${locate}"
+        Log.d("TAG", "sssssssssssssssssssssssssssssssssssss"+locate)
         val client = OkHttpClient()
         var json = JSONObject()
         var gson = Gson()
@@ -42,12 +77,11 @@ class JsonActivity : AppCompatActivity() {
 
                 Log.d("TAG", " here2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1"+ str)
                 val jObject = JSONObject(str)
-                val address = jObject.getString("addresses")
-                val jArray = JSONArray(address)
-                val treeObject = jArray.getJSONObject(0)
-                addressList.x = treeObject.getDouble("x")
-                addressList.y = treeObject.getString("y")
-                Log.d("TAG", " here2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1"+ addressList.x+"띠고"+addressList.y)
+                  val address = jObject.getString("addresses")
+                  val jArray = JSONArray(address)
+                  val treeObject = jArray.getJSONObject(0)
+                  treeObject
+
 
             }
 
@@ -58,6 +92,8 @@ class JsonActivity : AppCompatActivity() {
             }
 
         })
-    }
 
+
+
+    }
 }
