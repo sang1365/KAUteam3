@@ -12,14 +12,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.*
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.mobile_pt.messages.LatestMessagesFragment
+import com.example.mobile_pt.models.User
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.diet_fragment.*
 import java.lang.Exception
+import com.squareup.picasso.Picasso
+import java.net.URL
 import java.util.*
 
 class DietFragment :Fragment(), View.OnClickListener {
     var ctx : Context? = activity
     var dietcode : Int = 1
+
+    companion object{
+        var currentUser : User? = null
+        val TAG = "New_Main2Activity"
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ):
             View {
@@ -33,6 +46,19 @@ class DietFragment :Fragment(), View.OnClickListener {
         val Delete_button2 = view.findViewById<ImageButton>(R.id.delete_button2)
         val Delete_button3 = view.findViewById<ImageButton>(R.id.delete_button3)
 
+        var imageview_break = view.findViewById<ImageView>(R.id.Imageview_break)
+        var imageview_lunch = view.findViewById<ImageView>(R.id.Imageview_lunch)
+        var imageview_dinner = view.findViewById<ImageView>(R.id.Imageview_dinner)
+
+        var storageref : StorageReference = FirebaseStorage.getInstance().getReference("images/breakfast")
+        Glide.with(this).load(storageref).into(imageview_break)
+
+        storageref = FirebaseStorage.getInstance().getReference("images/lunch")
+        Glide.with(this).load(storageref).into(imageview_lunch)
+
+        storageref = FirebaseStorage.getInstance().getReference("images/dinner")
+        Glide.with(this).load(storageref).into(imageview_dinner)
+
         Add_button1.setOnClickListener(this)
         Add_button2.setOnClickListener(this)
         Add_button3.setOnClickListener(this)
@@ -44,10 +70,12 @@ class DietFragment :Fragment(), View.OnClickListener {
         return view
     }
 
-    companion object{
-        fun newinstance(): DietFragment{
-            return DietFragment()
-        }
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        DietFragment.currentUser = New_Main2Activity.currentUser
+        Log.d("DF", "Current user ${New_Main2Activity.currentUser?.profileImageUrl}")
     }
 
     override fun onClick(v: View?) {

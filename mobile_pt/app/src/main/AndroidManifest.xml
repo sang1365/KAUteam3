@@ -20,20 +20,12 @@
         <activity android:name=".messages.ChatLogActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".messages.LatestMessagesActivity" />
+                android:value=".New_Main2Activity" />
         </activity>
         <activity android:name=".messages.NewMessageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".messages.LatestMessagesActivity" />
-        </activity>
-        <activity android:name=".messages.LatestMessagesActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                android:value=".New_Main2Activity" />
         </activity>
         <activity android:name=".New_Main2Activity">
             <intent-filter>

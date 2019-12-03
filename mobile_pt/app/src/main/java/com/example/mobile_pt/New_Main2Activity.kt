@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.graphics.Bitmap
 import com.example.mobile_pt.R.layout.activity_new__main2
 import com.example.mobile_pt.messages.*
 import kotlinx.android.synthetic.main.activity_new__main2.*
