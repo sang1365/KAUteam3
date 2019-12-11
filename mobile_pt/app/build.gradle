@@ -17,7 +17,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.mobile_pt"
-        minSdkVersion 18
+        minSdkVersion 22
         targetSdkVersion 28
         multiDexEnabled true
         versionCode 1
@@ -63,8 +63,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.xwray:groupie:2.1.0'
-
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation "com.naver.maps:map-sdk:3.6.1"
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation("com.squareup.okhttp3:okhttp:4.2.1")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.2.1")
 }
 apply plugin: 'com.google.gms.google-services'

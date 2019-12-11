@@ -45,6 +45,9 @@ class PlannerFragment: Fragment() , View.OnClickListener{
         val todo : ArrayList<Todo> = ArrayList<Todo>()
         val ref = FirebaseDatabase.getInstance().getReference("/schedule/${currentUser!!.uid}")
         val fromId = FirebaseAuth.getInstance().uid
+        val listView : ListView = view.findViewById(R.id.planlist)
+        val adapter = plannerArrayAdapter(ctx!!, todo)
+        listView.adapter = adapter
 
         ref.addChildEventListener(object: ChildEventListener {
 
@@ -52,7 +55,7 @@ class PlannerFragment: Fragment() , View.OnClickListener{
                 val gettodo = p0.getValue(Todo::class.java)
                 if (todo != null) {
                     todo.add(gettodo!!)
-                    Log.d("plannerfragmentcontent",todo[0].title + todo[0].date)
+                    adapter.notifyDataSetChanged()
                 }
             }
             override fun onCancelled(p0: DatabaseError) {
@@ -71,9 +74,7 @@ class PlannerFragment: Fragment() , View.OnClickListener{
 
             }
         })
-        val listView : ListView = view.findViewById(R.id.planlist)
-        val adapter = plannerArrayAdapter(ctx!!, todo)
-        listView.adapter = adapter
+
         adapter.notifyDataSetChanged()
 
         val button = view.findViewById<Button>(R.id.addbutton)
@@ -86,11 +87,10 @@ class PlannerFragment: Fragment() , View.OnClickListener{
 
         return view
     }
-
+    //youtube api key = AIzaSyC9fGMBt7HyiuNa73DZbxbqbVQelZXJpks
     override fun onAttach(context: Context) {
         super.onAttach(context)
         currentUser = New_Main2Activity.currentUser
-        Log.d("PF", "Current user ${currentUser?.profileImageUrl}")
     }
 
     override fun onClick(p0: View?) {
@@ -102,5 +102,4 @@ class PlannerFragment: Fragment() , View.OnClickListener{
         super.onCreate(savedInstanceState)
         ctx=activity
     }
-
 }
