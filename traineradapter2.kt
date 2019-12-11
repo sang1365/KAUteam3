@@ -39,16 +39,18 @@ class traineradapter2 (val context: Context, val trainerList: ArrayList<trainerd
         val Photo = itemView?.findViewById<ImageView>(R.id.iv_prof)
         val name= itemView?.findViewById<TextView>(R.id.iv_name)
         val Age = itemView?.findViewById<TextView>(R.id.iv_name2)
+        val distance = itemView?.findViewById<TextView>(R.id.iv_dis)
 
 
         fun bind (trainerList: trainerdata, context: Context) {
-            if (trainerList.dinner != "") {
-                val resourceId = context.resources.getIdentifier(trainerList.dinner, "drawable", context.packageName)
+            if (trainerList.uid != "") {
+                val resourceId = context.resources.getIdentifier(trainerList.uid, "drawable", context.packageName)
                 Photo?.setImageResource(resourceId)
             } else {
                 Photo?.setImageResource(R.mipmap.ic_launcher)
             }
-            name?.text = trainerList.name
+            name?.text = trainerList.username
+            distance?.text = trainerList.distance.toString()
             Age?.text = trainerList.address
             itemView.setOnClickListener { itemClick(trainerList) }
 

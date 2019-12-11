@@ -9,11 +9,13 @@ import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.trainerlist.*
 import org.jetbrains.anko.startActivity
 
 import com.google.firebase.database.DataSnapshot
+import com.naver.maps.geometry.LatLng
 
 internal interface DataReceivedListener {
     fun onDataReceived(data: List<trainerdata>)
@@ -23,11 +25,13 @@ internal interface DataReceivedListener {
 class TrainerListActivity : AppCompatActivity() {
 
 
-    var trainerlist2 = arrayListOf<trainerdata>(
+    val trainerlist2 = arrayListOf<trainerdata>(
+    )
+    val myinfor = arrayListOf<trainerdata>(
     )
 
     private val database = FirebaseDatabase.getInstance()
-    private val dataRef = database.getReference("userss")
+    private val dataRef = database.getReference("users")
     lateinit var mrecy: RecyclerView
 
 
@@ -41,75 +45,81 @@ class TrainerListActivity : AppCompatActivity() {
 
 
         }
+        val uid = FirebaseAuth.getInstance().uid
+        val database = FirebaseDatabase.getInstance().reference
+        val ref = database.child("/users/$uid")
+
         mrecy = findViewById(R.id.rv)
         val lm = LinearLayoutManager(this)
         mrecy.layoutManager = lm
+
 
         mrecy.setHasFixedSize(true)
         val madapter = traineradapter2(this, trainerlist2) { trainerList ->
             startActivity<ProfileActivity>(
 
-                "name" to trainerList.name,
+                "name" to trainerList.username,
                 "address" to trainerList.address,
-                "dinner" to trainerList.dinner
+                "dinner" to trainerList.uid
             )
 
         }
 
 
-        dataRef.addValueEventListener(object : ValueEventListener {
+        ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                trainerlist2.clear()
-                for (dataSnapshot2 in dataSnapshot.children) { //하위노드가 없을 떄까지 반복
-                    val trainerdats = dataSnapshot2.getValue(trainerdata::class.java)!!
-                    Log.d("value@@@@@@@@@2", "change" + trainerdats)
 
 
+                    val myinf = dataSnapshot.getValue(trainerdata::class.java)!!
 
-                    trainerlist2.add(trainerdats)
-                    locatecompare(trainerlist2)
-                }
+                    myinfor.add(myinf)
 
-                madapter.notifyDataSetChanged()
+                dataRef.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot2: DataSnapshot) {
+                        trainerlist2.clear()
+                        for (dataSnapshot3 in dataSnapshot2.children) { //하위노드가 없을 떄까지 반복
+                            val trainerdats = dataSnapshot3.getValue(trainerdata::class.java)!!
+
+                            trainerlist2.add(trainerdats)
+
+                        }
+                       comparison(myinfor,trainerlist2)
+                        madapter.notifyDataSetChanged()
+                    }
+
+                    override fun onCancelled(p0: DatabaseError) {
+                    }
+                })
+
+
             }
 
             override fun onCancelled(p0: DatabaseError) {
             }
         })
-        Log.d("TAg", "this!!!ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ!!!!!!" + trainerlist2)
+
         mrecy.adapter = madapter
 
 
     }
+    fun comparison (array : ArrayList<trainerdata> , array2 : ArrayList<trainerdata>){
 
-    fun locatecompare(array: ArrayList<trainerdata>) {
-        val size = array.size
-        var temp = ArrayList<trainerdata>()
+        var posit = LatLng(array[0].x!!,array[0].y!!)
+        var posit2 = LatLng(array2[0].x!!,array2[0].y!!)
+        var posit3 = LatLng(array2[1].x!!,array2[1].y!!)
 
-            for (i in 0..(size - 1)) {
+        if(posit.distanceTo(posit2)==0.0) {
+            array2.removeAt(0)
 
-                for (j in 0..(size - 1)) {
+            array2[0].distance = posit.distanceTo(posit3)
+        }
+        else if(posit.distanceTo(posit3)==0.0){
 
-                    if(array[i].location != null && array[j].location !=null){
+            array2.removeAt(1)
+            array[0].distance = posit.distanceTo(posit2)
+        }
 
-                        if(array[i].location!! < array[j].location!!){
-                            temp[0] = array[i]
-                            array[j] = array[j]
-                            array[i] = temp[0]
-
-
-
-
-                        }
-
-
-                    }
-
-
-                }
-
-
-            }
 
     }
+
 }
