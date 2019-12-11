@@ -23,7 +23,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/add"
-        app:layout_constraintBottom_toTopOf="@id/delete_button1"
+        app:layout_constraintBottom_toTopOf="@id/remark_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/Imageview_break"
         app:layout_constraintTop_toBottomOf="@id/text_breakfast" />
@@ -38,14 +38,14 @@
         app:layout_constraintBottom_toTopOf="@id/add_button3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/Imageview_dinner"
-        app:layout_constraintTop_toBottomOf="@id/delete_button2" />
+        app:layout_constraintTop_toBottomOf="@id/remark_button2" />
 
     <ImageButton
         android:id="@+id/add_button3"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/add"
-        app:layout_constraintBottom_toTopOf="@id/delete_button3"
+        app:layout_constraintBottom_toTopOf="@id/remark_button3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/Imageview_dinner"
         app:layout_constraintTop_toBottomOf="@id/text_dinner" />
@@ -60,20 +60,20 @@
         app:layout_constraintBottom_toTopOf="@id/add_button2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/Imageview_lunch"
-        app:layout_constraintTop_toBottomOf="@id/delete_button1" />
+        app:layout_constraintTop_toBottomOf="@id/remark_button" />
 
     <ImageButton
         android:id="@+id/add_button2"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/add"
-        app:layout_constraintBottom_toTopOf="@id/delete_button2"
+        app:layout_constraintBottom_toTopOf="@id/remark_button2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/Imageview_lunch"
         app:layout_constraintTop_toBottomOf="@id/text_lunch" />
 
     <ImageButton
-        android:id="@+id/delete_button1"
+        android:id="@+id/remark_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/delete"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@id/add_button1" />
 
     <ImageButton
-        android:id="@+id/delete_button2"
+        android:id="@+id/remark_button2"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/delete"
@@ -93,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@id/add_button2" />
 
     <ImageButton
-        android:id="@+id/delete_button3"
+        android:id="@+id/remark_button3"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/delete"
@@ -109,7 +109,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/delete_button3"
+        app:layout_constraintTop_toBottomOf="@id/remark_button3"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <ImageView

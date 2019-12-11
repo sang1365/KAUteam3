@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_pt.New_Main2Activity
 import com.example.mobile_pt.R
-import com.example.mobile_pt.ViewHolder
 import com.example.mobile_pt.models.ChatMessage
 import com.example.mobile_pt.models.User
 import com.example.mobile_pt.registerlogin.RegisterActivity
@@ -28,7 +27,6 @@ class LatestMessagesFragment : Fragment(), View.OnClickListener{
 
     companion object{
         var currentUser: User? = null
-        val TAG = "LatestMessages"
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ):
@@ -41,6 +39,17 @@ class LatestMessagesFragment : Fragment(), View.OnClickListener{
 
         recyclerview_latest_messages.adapter = adapter
         recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(ctx, DividerItemDecoration.VERTICAL))
+
+        adapter.setOnItemClickListener { item, view ->
+            Log.d(LatestMessagesActivity.TAG, "123")
+            val intent = Intent(ctx, ChatLogActivity::class.java)
+
+            // we are missing the chat partner user
+
+            val row = item as LatestMessageRow
+            intent.putExtra(NewMessageActivity.USER_KEY, row.chatPartnerUser)
+            startActivity(intent)
+        }
 
         listenForLatestMessages()
 

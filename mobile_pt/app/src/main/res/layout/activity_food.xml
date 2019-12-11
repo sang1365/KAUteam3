@@ -50,7 +50,7 @@ tools:context=".FoodActivity">
         android:text="add"
         app:layout_constraintBottom_toTopOf="@id/listview_break"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/delete_button1"
+        app:layout_constraintLeft_toRightOf="@id/remark_button"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside" />
@@ -78,7 +78,7 @@ tools:context=".FoodActivity">
         app:layout_constraintBottom_toTopOf="@id/listview_dinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintLeft_toRightOf="@id/delete_button3"
+        app:layout_constraintLeft_toRightOf="@id/remark_button3"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/listview_lunch"
         app:layout_constraintVertical_chainStyle="spread_inside" />
@@ -93,7 +93,7 @@ tools:context=".FoodActivity">
         android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@id/listview_break"
         app:layout_constraintLeft_toRightOf="@id/text_breakfast"
-        app:layout_constraintRight_toLeftOf="@id/delete_button1"
+        app:layout_constraintRight_toLeftOf="@id/remark_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
@@ -107,7 +107,7 @@ tools:context=".FoodActivity">
         android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@id/listview_lunch"
         app:layout_constraintLeft_toRightOf="@id/text_lunch"
-        app:layout_constraintRight_toLeftOf="@id/delete_button2"
+        app:layout_constraintRight_toLeftOf="@id/remark_button2"
         app:layout_constraintTop_toBottomOf="@id/listview_break"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
@@ -131,7 +131,7 @@ tools:context=".FoodActivity">
         android:text="add"
         app:layout_constraintBottom_toTopOf="@id/listview_lunch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/delete_button2"
+        app:layout_constraintLeft_toRightOf="@id/remark_button2"
         app:layout_constraintTop_toBottomOf="@id/listview_break"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
@@ -145,12 +145,12 @@ tools:context=".FoodActivity">
         android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@id/listview_dinner"
         app:layout_constraintLeft_toRightOf="@id/text_dinner"
-        app:layout_constraintRight_toLeftOf="@id/delete_button3"
+        app:layout_constraintRight_toLeftOf="@id/remark_button3"
         app:layout_constraintTop_toBottomOf="@id/listview_lunch"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <Button
-        android:id="@+id/delete_button1"
+        android:id="@+id/remark_button"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="delete"
@@ -160,7 +160,7 @@ tools:context=".FoodActivity">
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/delete_button2"
+        android:id="@+id/remark_button2"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="delete"
@@ -170,7 +170,7 @@ tools:context=".FoodActivity">
         app:layout_constraintTop_toBottomOf="@id/listview_break" />
 
     <Button
-        android:id="@+id/delete_button3"
+        android:id="@+id/remark_button3"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="delete"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -20,7 +20,7 @@
         tools:text="2019.10.1" />
 
     <TextView
-        android:id="@+id/text2"
+        android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -30,6 +30,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text1"
+        app:layout_constraintTop_toBottomOf="@+id/date"
         tools:text="계획" />
 </androidx.constraintlayout.widget.ConstraintLayout>

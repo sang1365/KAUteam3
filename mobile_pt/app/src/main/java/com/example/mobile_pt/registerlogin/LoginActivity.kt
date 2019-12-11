@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mobile_pt.New_Main2Activity
 import com.example.mobile_pt.messages.LatestMessagesActivity
 import com.example.mobile_pt.R
+import com.example.mobile_pt.models.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 

@@ -3,6 +3,7 @@ package com.example.mobile_pt.messages
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.mobile_pt.New_Main2Activity
 import com.example.mobile_pt.R
 import com.example.mobile_pt.models.ChatMessage
 import com.example.mobile_pt.models.User
@@ -39,7 +40,7 @@ class ChatLogActivity : AppCompatActivity() {
         toUser = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
         supportActionBar?.title = toUser?.username
 
-    //    setupDummyData()
+        //    setupDummyData()
         listenForMessages()
 
         send_button_chat_log.setOnClickListener{
@@ -61,7 +62,7 @@ class ChatLogActivity : AppCompatActivity() {
                     Log.d(TAG, chatMessage.text)
 
                     if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
-                        val currentUser = LatestMessagesActivity.currentUser ?:return
+                        val currentUser = New_Main2Activity.currentUser ?:return
                         adapter.add(ChatFromItem(chatMessage.text, currentUser))
                     } else {
                         adapter.add(ChatToItem(chatMessage.text, toUser!!))
@@ -96,7 +97,6 @@ class ChatLogActivity : AppCompatActivity() {
 
         if (fromId == null) return
 
-       // val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
         val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
 
         val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
@@ -114,6 +114,38 @@ class ChatLogActivity : AppCompatActivity() {
         latestMessageRef.setValue(chatMessage)
 
         val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
+        latestMessageToRef.setValue(chatMessage)
+    }
+
+    fun SendFeedback(Text : String) {
+        // how do we actually send a message to firebase...
+
+
+        val text = Text
+
+        val fromid = New_Main2Activity.currentUser!!.uid
+        val told = New_Main2Activity.partnerUser!!.uid
+
+        if (fromid == null) return
+
+        Log.d("chatlogactivity","chatlogactivity started")
+
+        // val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+        val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromid/$told").push()
+
+        val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$told/$fromid").push()
+
+        val chatMessage = ChatMessage(reference.key!!, text, fromid, told, System.currentTimeMillis() / 1000)
+        reference.setValue(chatMessage)
+            .addOnSuccessListener {
+                Log.d(TAG, "Saved our chat message: ${reference.key}")
+            }
+        toReference.setValue(chatMessage)
+
+        val latestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromid/$told")
+        latestMessageRef.setValue(chatMessage)
+
+        val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$told/$fromid")
         latestMessageToRef.setValue(chatMessage)
     }
 }
