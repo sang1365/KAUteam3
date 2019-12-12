@@ -2,6 +2,7 @@ package com.example.mobile_pt.planner
 
 import android.content.Context
 import android.text.Layout
+import android.text.format.DateFormat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,21 +15,38 @@ import com.example.mobile_pt.planner.Todo
 import kotlinx.android.synthetic.main.item_todo.view.*
 import com.example.mobile_pt.R
 import org.w3c.dom.Text
+import java.util.*
+import kotlin.collections.ArrayList
 
 class plannerArrayAdapter(context: Context, todo : ArrayList<Todo>) : BaseAdapter() {
+
     val todo : ArrayList<Todo> = todo
-    val mcontext = context
+    val inflater = LayoutInflater.from(context)
+    var d : Date = Date()
+
     override fun getView(position : Int, view : View?, viewGroup: ViewGroup?): View {
         lateinit var viewHolder: ViewHolder
-        val planview = LayoutInflater.inflate(R.layout.item_todo, viewGroup, false)
+        var planview = view
+        if(view == null) {
+            viewHolder = ViewHolder()
+            planview = inflater.inflate(R.layout.item_todo, viewGroup , false) as View
 
-        val date = planview.findViewById<TextView>(R.id.date)
-        date.text = todo.get(position).date.toString()
-        val title = planview.findViewById<TextView>(R.id.title)
-        title.text = todo.get(position).title
-        Log.d("plannerarrayadapter",todo.get(position).title)
+            viewHolder.textdate = planview.findViewById(R.id.date)
+            viewHolder.texttitle = planview.findViewById(R.id.title)
+            Log.d("plannerarrayadapter", todo.get(position).title)
 
-        return planview
+            planview.tag = viewHolder
+
+            viewHolder.textdate.text = DateFormat.format("yyyy/mm/dd",todo[position].date)
+            viewHolder.texttitle.text = todo[position].title
+            return planview
+        }
+        else{
+            viewHolder = planview!!.tag as ViewHolder
+        }
+        viewHolder.textdate.text = DateFormat.format("yyyy/mm/dd",todo[position].date)
+        viewHolder.texttitle.text = todo[position].title
+        return planview!!
     }
 
     override fun getItem(position: Int): Any {
@@ -36,7 +54,7 @@ class plannerArrayAdapter(context: Context, todo : ArrayList<Todo>) : BaseAdapte
         return selectItem
     }
 
-    override fun getItemId(position: Int): Long {
+     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 

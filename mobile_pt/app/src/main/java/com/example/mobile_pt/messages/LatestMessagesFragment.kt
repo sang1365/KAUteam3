@@ -41,7 +41,6 @@ class LatestMessagesFragment : Fragment(), View.OnClickListener{
         recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(ctx, DividerItemDecoration.VERTICAL))
 
         adapter.setOnItemClickListener { item, view ->
-            Log.d(LatestMessagesActivity.TAG, "123")
             val intent = Intent(ctx, ChatLogActivity::class.java)
 
             // we are missing the chat partner user
@@ -129,7 +128,6 @@ class LatestMessagesFragment : Fragment(), View.OnClickListener{
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.nav_menu, menu)
         adapter.setOnItemClickListener { item, view ->
-            Log.d(LatestMessagesActivity.TAG, "123")
             val intent = Intent(ctx, ChatLogActivity::class.java)
 
             // we are missing the chat partner user

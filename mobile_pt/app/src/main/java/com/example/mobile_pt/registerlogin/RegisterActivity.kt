@@ -9,7 +9,6 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import com.example.mobile_pt.New_Main2Activity
-import com.example.mobile_pt.messages.LatestMessagesActivity
 import com.example.mobile_pt.R
 import com.example.mobile_pt.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -117,7 +116,7 @@ class RegisterActivity: AppCompatActivity() {
     private fun saveUserToFirebaseDatabase(profileImageUri: String) {
         val uid = FirebaseAuth.getInstance().uid ?:""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user = User(uid, username_edittext_register.text.toString(),"",address_edittext_register.text.toString(), profileImageUri)
+        val user = User(uid, username_edittext_register.text.toString(),"",address_edittext_register.text.toString(), profileImageUri,0.0,0.0)
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d(TAG, "Finally we saved the user to Firebase Database")
